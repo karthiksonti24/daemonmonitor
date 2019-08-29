@@ -13,7 +13,6 @@ class DaemonMonitor(object):
         """Usage:Used to Check whether given service is running"""
         cmd = '/bin/systemctl status %s.service' % self.service
         proc = subprocess.Popen(cmd, shell=True,stdout=subprocess.PIPE)
-        print proc
         stdout_list = proc.communicate()[0].split('\n')
         for line in stdout_list:
             if 'Active:' in line:
@@ -25,7 +24,6 @@ class DaemonMonitor(object):
         """Usage:Used to start a service"""
         cmd = '/bin/systemctl start %s.service' % self.service
         proc = subprocess.Popen(cmd, shell=True,stdout=subprocess.PIPE)
-        print proc
         proc.communicate()
 
 if __name__ == '__main__':                                                 
